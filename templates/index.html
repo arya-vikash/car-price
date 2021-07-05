@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #ece8e8;
+        }
+        .card-row{
+            background-color: #fff;
+            margin-top: 15vh;
+            box-shadow: 5px 5px 10px 5px #888;
+            border: none;
+            border-radius: 15px;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        .tag{
+            margin-bottom: 15px;
+        }
+        .result{
+            margin-top: 4em ;
+            color: rgb(211, 84, 0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <center>
+        <div class="row card-row">
+            <div class="col-12 col-md-8 offset-md-2">
+                <form class='form' action="{{ url_for('predict')}}" method="post">
+                    <h1>Car Price Prediction </h2>
+                    <p class="tag">Enter your car details to know your car price</p><hr>
+                    <label for="Year">Year : <input id="first" class="form-control" name="Year" type="number "></label>
+                    <label for="Present_Price">Showroom Price : <input id="second" class="form-control" name="Present_Price" required="required"></label><br>
+                    <label for="Kms_Driven">KMs Driven : <input id="third" class="form-control" name="Kms_Driven" required="required"></label>
+                    <label for="Owner">Previous owner count : <input id="fourth" class="form-control" name="Owner" required="required"></label><br>
+                    <div class="row">
+                        <div class="col-12 col-md-4 form-group ">
+                            <label for="Fuel_Type_Petrol">Fuel Type</label><select class="form-control" name="Fuel_Type_Petrol" id="fuel" required="required">
+                                <option value="Petrol">Petrol</option>
+                                <option value="Diesel">Diesel</option>
+                                <option value="Diesel">CNG</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-4 form-group ">
+                            <label for="Seller_Type_Individual">Seller type</label><select name="Seller_Type_Individual" class="form-control" id="resea" required="required">
+                                <option value="Dealer">Dealer</option>
+                                <option value="Individual">Individual</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-4 form-group ">
+                            <label for="Transmission_Mannual">Transmission type</label><select name="Transmission_Mannual" class="form-control" id="research" required="required">
+                                <option value="Mannual">Manual Car</option>
+                                <option value="Automatic">Automatic Car</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+
+                    <br><br><button class="btn btn-primary" id="sub" type="submit ">Calculate the Selling Price</button>
+                </form>
+            </div>
+        </div>
+    </center>
+    <center>
+        <div class="row result">
+            <div class="col-12">
+            
+                <h2>{{ prediction_text }}<h2>
+            </div>
+        </div>
+    </center>
+    </div>
+
+    
+
+
+</body>
+
+</html>
